@@ -7,7 +7,7 @@
                     <v-flex>
                         <h3 class="display-3">WhyUs</h3>
                         <v-divider class="my-3"></v-divider>
-                        <div class="title mb-3">To be continued!</div>
+                        <div class="title mb-3">To be continued!!</div>
                     </v-flex>
                 </v-layout>
             </v-container>
