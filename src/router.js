@@ -4,6 +4,7 @@ import Home from './views/Home.vue'
 import Contact from './views/Contact.vue'
 import Condadite from './views/Condadite.vue'
 import WhyUs from './views/WhyUs.vue'
+import Career from './views/Career/Career.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -37,6 +38,11 @@ export default new Router({
       path: '/whyus',
       name: 'whyus',
       component:WhyUs
+    },
+    {
+      path:'/career',
+      name:'career',
+      component:Career
     }
   ]
 })

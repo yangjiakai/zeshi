@@ -1,38 +1,90 @@
 <template>
   <div class="about">
-    <v-jumbotron gradient="to top right, rgba(63,81,181, .7), rgba(25,32,72, .7)" dark
-      src="https://cdn.vuetifyjs.com/images/parallax/material2.jpg">
-      <v-container fill-height>
-        <v-layout align-center>
-          <v-flex>
-       
-            <h3 class="display-3">About Us</h3>
-<v-divider class="my-3"></v-divider>
-            <span class="subheading">Since 2007, Versal Consulting grows to be one of the largest search firms which
-              focus on talent placement of Manufacture Industries, especially for Automotive and Chemical Industries.
-            </span>
-            <br>
-            <span class="subheading">Our clientwiths range in size from the world's largest corporations to emerging growth companies.
-            </span>
-            <br>
-            <span class="subheading">
-As a superior recruitment consulting company  experienced consultants of specialized industries, <br>
- we are dedicated to provide consulting service in creating value for our clients through the assessment and recruitment of top-level management resources.
-            </span>
+    <v-layout row wrap align-center class="main-area">
+      <v-flex md3 xs12>
+        <v-card color="rgb(10,10,10)" dark class="business-area">
+          <h1>主要业务</h1>
+        </v-card>
+      </v-flex>
+      <v-flex md3 xs12>
+        <v-card class="transition-area">
+        </v-card>
+      </v-flex>
+      <v-flex md6 xs12>
+        <v-card color="rgb(224,166,31)" dark class="company-area">
+          <h1>公司情报</h1>
+          <p>公司名</p>
+          <p>公司名</p>
+          <p>公司名</p>
+          <p>公司名</p>
+          <p>公司名</p>
+          <p>公司名</p>
+          <p>公司名</p>
+          <p>公司名</p>
+        </v-card>
+      </v-flex>
+    </v-layout>
+    <v-tabs v-model="tab" color="info" align-with-title dark>
+      <v-tabs-slider color="yellow"></v-tabs-slider>
+      <v-tab v-for="item in subMenu" :key="item">
+        {{ item }}
+      </v-tab>
+    </v-tabs>
 
-            <v-divider class="my-3"></v-divider>
+    <v-tabs-items v-model="tab">
+      <v-tab-item>
+        <v-card flat>
+          <History></History>
+        </v-card>
+      </v-tab-item>
+      <v-tab-item>
+        <v-card flat height="1000px">
+          2
+        </v-card>
+      </v-tab-item>
+    </v-tabs-items>
 
-            <div class="title mb-3">To be continued!</div>
-
-          </v-flex>
-        </v-layout>
-      </v-container>
-    </v-jumbotron>
   </div>
 </template>
 
 <script>
+  import History from './About/History'
   export default {
+    components: {
+      History,
+    },
+    data() {
+      return {
+        tab: null,
+        subMenu: [
+          '历史沿革', '创始人', '合作伙伴', '发展计划', '核心业务'
+        ],
+      }
+    }
 
   }
 </script>
+
+<style scoped>
+  .main-area .v-card {
+    border-radius: 0;
+    height: 600px;
+    padding: 20px;
+  }
+
+  .business-area {
+    color: #565656;
+  }
+
+  .transition-area {
+    background: url("../assets/images/about us/meeting.jpg") center center;
+    background-size: cover;
+    background-position: fixed;
+  }
+
+  .v-tab-item {
+    height: 1000px;
+  }
+
+
+</style>

@@ -6,10 +6,6 @@
                 <v-layout align-center>
                     <v-flex>
                         <h3 class="display-3">Submit Resume</h3>
-                        <v-divider class="my-3"></v-divider>
-                        <span class="subheading">Since 2007, Versal Consulting grows to be one of the largest search
-                        </span>
-
 
                         <v-divider class="my-3"></v-divider>
 
