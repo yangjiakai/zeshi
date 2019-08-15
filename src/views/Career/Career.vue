@@ -1,63 +1,79 @@
 <template>
     <div>
-        {{posts}}
-        <v-btn color="success" @click="insert">insert</v-btn>
-        <v-btn color="error" @click="deletea('5')">delete</v-btn>
-        {{mes}}
-        <!-- <v-list two-line>
-            <template v-for="post in posts">
-                <v-list-tile avatar  :key="post.id">
-                    <v-list-tile-avatar>
-                        <span>A</span>
-                    </v-list-tile-avatar>
-                    <v-list-tile-content>
-                        <v-list-tile-title>{{post.title}}</v-list-tile-title>
-                        <v-list-tile-sub-title>{{post.author}}</v-list-tile-sub-title>
-                    </v-list-tile-content>
-                </v-list-tile>
-            </template>
+        <v-container grid-list-xs>
+            <ListJob></ListJob>
 
-        </v-list> -->
+            <v-layout row wrap class="my-3">
+                <v-flex xs9 v-for="job in allJobs" :key="job.id" my-2>
+                    <v-card class="pa-3">
+                        <h1>{{job.job_name}}</h1>
+                        <v-chip color="indigo" text-color="white">
+                            <v-avatar>
+                                <v-icon>supervised_user_circle</v-icon>
+                            </v-avatar>
+                            {{job.company}}
+                        </v-chip>
+                        <v-chip color="primary" text-color="white">
+                            <v-avatar>
+                                <v-icon>location_on</v-icon>
+                            </v-avatar>
+                            {{job.location}}
+                        </v-chip>
+                        <v-divider class="ma-2">></v-divider>
+                        <ul>
+                            <h5>工作描述</h5>
+                            <li v-for="(res,reskey) in job.responsibilities" :key="reskey">
+                                <v-icon class="px-1">flip_to_back</v-icon>{{res}}
+                            </li>
+                        </ul>
+                        <v-divider class="ma-2"></v-divider>
+                        <ul>
+                            <h5>技能需求</h5>
+                            <li v-for="(req,requreKey) in job.requirement" :key="requreKey">
+                                <v-icon class="px-1">turned_in</v-icon>{{req}}
+                            </li>
+                        </ul>
+                    </v-card>
+                </v-flex>
+            </v-layout>
+            <AddJob></AddJob>
+        </v-container>
     </div>
 </template>
 
 <script>
-    const axios = require('axios')
+    // const axios = require('axios')
+    import AddJob from './AddJob'
+    import ListJob from './ListJob'
+    import {
+        mapGetters,
+        mapActions
+    } from 'vuex'
     export default {
-
         data() {
-            return {
-                name: '555',
-                posts: [],
-                mes:{}
-            }
-        },
-        created() {
-            this.$store.dispatch('getPosts')
+            return {}
         },
         computed: {
-            // posts: () => {
-            //     return this.$store.state.posts
-            // }
-        },
-        mounted() {
-            axios.get("http://localhost:3000/posts")
-                .then((res) => {
-                    this.posts = res.data
-                })
+            ...mapGetters(["allJobs"])
         },
         methods: {
-            insert() {
-                axios.post("http://localhost:3000/posts/",{
-                    title: 'new-server',
-                    author: 'yjk'
-                }).then(res => ( this.posts = [res.data,...this.posts]))
-            },
-            deletea(id){
-                axios.delete(`http://localhost:3000/posts/${id}`)
-                .then(res=>(this.posts = this.posts.filter(post=>post.id!=id)))
-            }
+            ...mapActions(["fetchJobs"])
         },
+        created() {
+            this.fetchJobs()
+        },
+        components: {
+            AddJob,
+            ListJob
+        }
+
 
     }
 </script>
+
+
+<style lang="css">
+    li {
+        list-style: none;
+    }
+</style>

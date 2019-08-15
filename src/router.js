@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
+import Home from './views/Home/Home.vue'
 import Contact from './views/Contact.vue'
 import Condadite from './views/Condadite.vue'
 import WhyUs from './views/WhyUs.vue'

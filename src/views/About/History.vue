@@ -7,9 +7,10 @@
                         <i class="material-icons">timeline</i>
                     </template>
                 </v-timeline-item>
-                <v-timeline-item class="mb-3" color="grey" icon-color="grey lighten-2" small v-for="item in history" :key="item">
+                <v-timeline-item class="mb-3" color="grey" icon-color="grey lighten-2" small v-for="item in history"
+                    :key="item">
                     <v-layout justify-space-between>
-                        <v-flex xs5 text-xs-left>
+                        <v-flex xs10 md5 text-xs-left>
                             <p>
                                 <v-chip class="white--text ml-0" color="info" label small>
                                     {{item.year}}
@@ -17,7 +18,7 @@
                             </p>
                             <p>{{item.event}}</p>
                         </v-flex>
-                        <v-flex xs7 align-self-center>{{item.detile}}</v-flex>
+                        <v-flex  v-if="windowSize.x>800" xs7 align-self-center>{{item.detile}}</v-flex>
                     </v-layout>
                 </v-timeline-item>
             </v-timeline>
@@ -30,6 +31,10 @@
         name: 'history',
         data: () => ({
             events: [],
+            windowSize: {
+                x: 0,
+                y: 0,
+            },
             input: null,
             nonce: 0,
             history: [{
@@ -84,9 +89,18 @@
         computed: {
 
         },
+        mounted() {
+            this.onResize()
+        },
 
         methods: {
+            onResize() {
+                this.windowSize = {
+                    x: window.innerWidth,
+                    y: window.innerHeight
+                }
 
+            },
         }
     }
 </script>
