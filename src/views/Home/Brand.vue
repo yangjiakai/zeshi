@@ -3,13 +3,13 @@
         <v-layout row wrap align-center column justify-center height="500px" class="hope" id="holder"> 
             <div class="top-decoration"></div>
             <p class="company-name" style="font-size: 8rem;color: aliceblue">择仕中国</p>
-            <div class="company-logo">VERSAL</div>
+            <div class="company-logo">VERSAL CHINA</div>
             <div class="bottom-decoration"></div>
             <vue-typed-js :strings="['让企业和个人的未来增值!']">
                 <h1 class="typing my-3"></h1>
             </vue-typed-js>
         </v-layout>
-    </div>
+    </div> 
 </template>
 
 <script>
@@ -52,7 +52,7 @@
     }
 
     .company-logo{
-        font-size: 4rem;
+        font-size: 3rem;
         color:rgba(255, 255, 255, 0.8);
     }
 
